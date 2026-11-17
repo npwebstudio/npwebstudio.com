@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NP Web Studio – Nikhil Pandey, Website Developer</title>
+<meta name="description" content="NP Web Studio: fast, mobile-friendly websites for small businesses, clinics and shops, built by Nikhil Pandey with ASP.NET, C# and SQL Server.">
+<meta property="og:title" content="NP Web Studio – Nikhil Pandey, Website Developer">
+<meta property="og:description" content="Fast, mobile-friendly websites for small businesses, clinics and shops.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%92%BB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef2f7; --surface:#ffffff; --ink:#14213d; --muted:#4b5a75; --line:#d3dbe8;
+  --accent:#2f5bff; --accent-ink:#ffffff; --signal:#ffb703; --soft:#dfe7ff;
+  --display:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0f1830;--surface:#18233f;--ink:#e8edf8;--muted:#a3b0cb;--line:#2c3a5c;--accent:#7b9bff;--accent-ink:#0f1830;--soft:#22305a}
+}
+:root[data-theme="dark"]{--bg:#0f1830;--surface:#18233f;--ink:#e8edf8;--muted:#a3b0cb;--line:#2c3a5c;--accent:#7b9bff;--accent-ink:#0f1830;--soft:#22305a}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--body)}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
+header{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;gap:1rem;flex-wrap:wrap}
+.logo{font:800 1.25rem var(--display);text-decoration:none}
+nav{display:flex;gap:1.25rem;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--muted);font-weight:500}
+nav a:hover{color:var(--ink)}
+.btn{display:inline-block;padding:.85rem 1.4rem;border-radius:10px;background:var(--accent);color:var(--accent-ink);font-weight:600;text-decoration:none;border:2px solid var(--accent)}
+.btn.alt{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn:hover{filter:brightness(1.08)}
+/* hero */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center;padding:3.5rem 0 4.5rem}
+.hero h1{font-size:clamp(2.4rem,6vw,4.1rem);font-weight:800}
+.hero p{color:var(--muted);max-width:34rem;margin:1.25rem 0 1.75rem;font-size:1.15rem}
+.cta{display:flex;gap:.75rem;flex-wrap:wrap}
+.avail{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.75rem;font-size:.95rem;color:var(--muted)}
+.avail i{width:.6rem;height:.6rem;border-radius:50%;background:#1fa971;display:inline-block}
+/* browser mock: the one memorable moment */
+.browser{background:var(--surface);border:2px solid var(--ink);border-radius:14px;box-shadow:10px 10px 0 var(--accent);overflow:hidden}
+.bar{display:flex;gap:.4rem;align-items:center;padding:.65rem .8rem;border-bottom:2px solid var(--ink);background:var(--soft)}
+.bar b{width:.65rem;height:.65rem;border-radius:50%;background:var(--ink);opacity:.35}
+.bar span{margin-left:.6rem;font-size:.8rem;color:var(--muted);background:var(--surface);padding:.1rem .7rem;border-radius:99px;flex:1;max-width:14rem}
+.page{padding:1.25rem;display:grid;gap:.8rem}
+.page div{border-radius:8px;transform-origin:left;animation:fill .7s cubic-bezier(.2,.7,.2,1) both}
+.p1{height:2.4rem;width:70%;background:var(--ink);animation-delay:.2s!important}
+.p2{height:.8rem;width:90%;background:var(--line);animation-delay:.5s!important}
+.p3{height:.8rem;width:60%;background:var(--line);animation-delay:.65s!important}
+.p4{height:2.4rem;width:8rem;background:var(--accent);animation-delay:.9s!important}
+.pg{display:grid!important;grid-template-columns:repeat(3,1fr);gap:.6rem;background:none!important;animation-delay:1.2s!important}
+.pg i{height:4.2rem;border-radius:8px;background:var(--soft);border:2px solid var(--line)}
+.pg i:nth-child(2){background:var(--signal);border-color:var(--signal)}
+@keyframes fill{from{transform:scaleX(0);opacity:0}to{transform:scaleX(1);opacity:1}}
+/* sections */
+section{padding:3.5rem 0;border-top:2px solid var(--line)}
+section>.wrap>h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.6rem}
+.lead{color:var(--muted);max-width:38rem;margin:0 0 2rem}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:1.5rem}
+.card h3{font-size:1.3rem;margin-bottom:.5rem}
+.card p{margin:0;color:var(--muted)}
+.thumb{height:9rem;border-radius:10px;margin-bottom:1.1rem;padding:.8rem;display:grid;gap:.5rem;align-content:start}
+.thumb i{display:block;border-radius:6px;background:rgba(255,255,255,.85);height:.7rem}
+.t1{background:#e4572e}.t1 i:first-child{height:2rem;width:60%}
+.t2{background:#1fa971}.t2 .row{display:grid;grid-template-columns:1fr 1fr;gap:.5rem}.t2 .row i{height:3.4rem}
+.t3{background:#5b4bdb}.t3 .row{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}.t3 .row i{height:4rem}
+.tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:1rem}
+.tags span{font-size:.85rem;padding:.15rem .65rem;border-radius:99px;background:var(--soft);color:var(--ink)}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;padding:0;list-style:none;margin:0}
+.steps li{counter-increment:s;border-top:4px solid var(--accent);padding-top:1rem}
+.steps li::before{content:counter(s);font:800 1.8rem var(--display);color:var(--accent);display:block}
+.steps h3{font-size:1.15rem;margin:.2rem 0 .4rem}
+.steps p{margin:0;color:var(--muted);font-size:1rem}
+.skills{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.5rem}
+.skills span{padding:.4rem .9rem;border:2px solid var(--line);border-radius:10px;background:var(--surface);font-weight:500}
+.contact{background:var(--ink);color:var(--bg);border-radius:20px;padding:2.5rem;display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:center}
+.contact h2{font-size:clamp(1.8rem,4vw,2.5rem);color:var(--bg)}
+.contact p{margin:.8rem 0 0;opacity:.8}
+.contact .btn{background:var(--signal);border-color:var(--signal);color:#14213d}
+.contact .btn.alt{background:transparent;color:var(--bg);border-color:rgba(255,255,255,.4)}
+.contact .cta{flex-direction:column;align-items:stretch;text-align:center}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.95rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+@media (max-width:860px){
+  .hero,.contact{grid-template-columns:1fr}
+  .grid3{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+}
+@media (max-width:480px){.steps{grid-template-columns:1fr}.contact{padding:1.5rem}}
+@media (prefers-reduced-motion:reduce){.page div{animation:none}html{scroll-behavior:auto}}
+/* v2 */
+.logo span{color:var(--accent)}
+.logo{position:relative}
+.logo::after{content:"";position:absolute;left:0;bottom:-3px;width:0;height:3px;background:var(--signal);transition:width .3s}
+.logo:hover::after{width:100%}
+.type{color:var(--accent);font-weight:600}
+.caret{display:inline-block;width:2px;height:1.1em;background:var(--accent);margin-left:2px;vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.browser{animation:bob 6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+.chips{list-style:none;margin:0;padding:0;display:flex;gap:.5rem;flex-wrap:wrap}
+.chips li{font-size:.85rem;font-weight:600;padding:.25rem .8rem;border-radius:99px;background:var(--ink);color:var(--bg);animation:chip 3s ease-in-out infinite}
+.chips li:nth-child(2){animation-delay:.4s}.chips li:nth-child(3){animation-delay:.8s}.chips li:nth-child(4){animation-delay:1.2s}
+@keyframes chip{50%{transform:translateY(-5px);background:var(--accent);color:var(--accent-ink)}}
+.about{display:grid;grid-template-columns:.8fr 1.2fr;gap:3rem;align-items:center}
+.about h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.8rem}
+.portrait svg{width:100%;max-width:360px;display:block;margin:0 auto}
+.float{animation:fl 4s ease-in-out infinite;font-family:var(--display)}
+.f2{animation-delay:.7s}.f3{animation-delay:1.4s}
+@keyframes fl{50%{transform:translateY(-12px)}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.stats div{background:var(--surface);border:2px solid var(--line);border-radius:14px;padding:1rem}
+.stats b{display:block;font:800 2.2rem var(--display);color:var(--accent)}
+.stats b::after{content:""}
+.stats span{color:var(--muted);font-size:.95rem}
+.card{transition:transform .25s,border-color .25s,box-shadow .25s}
+.card:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 12px 0 -4px var(--soft)}
+.thumb{position:relative;overflow:hidden}
+.thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);transform:translateX(-120%);transition:transform .7s}
+.card:hover .thumb::after{transform:translateX(120%)}
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+.js .rv.in{opacity:1;transform:none}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.browser,.chips li,.float,.caret{animation:none}.js .rv{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="#top" aria-label="NP Web Studio, home">NP <span>Web Studio</span></a>
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="hero">
+      <div>
+        <h1>Websites that bring you customers, not just visitors.</h1>
+        <p>I’m Nikhil Pandey, and I build <span class="type" id="rot">business websites</span><span class="caret"></span> that look right on every phone and are simple to keep updated.</p>
+        <div class="cta">
+          <a class="btn" href="#contact">Get a free quote</a>
+          <a class="btn alt" href="#work">See my work</a>
+        </div>
+        <div class="avail"><i></i>Taking new projects this month</div>
+      </div>
+      <div class="browser" role="img" aria-label="Illustration of a website being built">
+        <div class="bar"><b></b><b></b><b></b><span>yourbusiness.com</span></div>
+        <div class="page">
+          <div class="p1"></div><div class="p2"></div><div class="p3"></div><div class="p4"></div>
+          <div class="pg"><i></i><i></i><i></i></div>
+          <ul class="chips"><li>HTML</li><li>ASP.NET</li><li>C#</li><li>SQL Server</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="wrap" style="padding:0">
+        <div class="about">
+          <div class="portrait">
+            <svg viewBox="0 0 320 340" role="img" aria-label="Illustration of Nikhil working at a laptop">
+              <circle cx="160" cy="170" r="150" fill="var(--soft)"/>
+              <text class="float f1" x="34" y="90" font-size="34" font-weight="800" fill="var(--accent)">&lt;/&gt;</text>
+              <text class="float f2" x="232" y="70" font-size="30" font-weight="800" fill="var(--ink)">{ }</text>
+              <text class="float f3" x="246" y="170" font-size="26" font-weight="800" fill="var(--accent)">#</text>
+              <rect x="36" y="262" width="248" height="14" rx="7" fill="var(--ink)"/>
+              <path d="M92 264c0-62 32-88 68-88s68 26 68 88z" fill="var(--accent)"/>
+              <rect x="140" y="138" width="40" height="44" rx="14" fill="#c98f6b"/>
+              <circle cx="160" cy="112" r="42" fill="#d9a17c"/>
+              <path d="M117 110c-2-36 20-52 45-52 26 0 43 16 41 48-9-18-26-26-45-24-18 2-30 10-41 28z" fill="#1d1a2b"/>
+              <circle cx="147" cy="114" r="4" fill="#1d1a2b"/><circle cx="173" cy="114" r="4" fill="#1d1a2b"/>
+              <path d="M149 129q11 9 22 0" stroke="#1d1a2b" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <rect x="100" y="214" width="120" height="50" rx="7" fill="var(--surface)" stroke="var(--ink)" stroke-width="4"/>
+              <circle cx="160" cy="239" r="8" fill="var(--signal)"/>
+            </svg>
+          </div>
+          <div>
+            <h2>Hi, I’m Nikhil Pandey.</h2>
+            <p class="lead">I’m a fresher website developer, learning and building every day with ASP.NET, C# and SQL Server. I’m taking on my first small projects at friendly prices, and you work directly with me from start to finish.</p>
+            <div class="stats">
+              <div><b>1:1</b><span>you work directly with me</span></div>
+              <div><b>Mobile</b><span>first design on every site</span></div>
+              <div><b>1 day</b><span>reply time on messages</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="wrap" style="padding:0">
+        <h2>What I build</h2>
+        <p class="lead">Clear, honest packages. You know what you get and what it costs before we start.</p>
+        <div class="grid3">
+          <div class="card"><h3>Business websites</h3><p>A home page, services, about and contact pages that explain what you do and make it easy to call or message you.</p></div>
+          <div class="card"><h3>Online stores</h3><p>Product catalogue, cart and payments, set up so you can add products and manage orders yourself.</p></div>
+          <div class="card"><h3>Web apps</h3><p>Booking forms, login areas, admin panels and dashboards connected to a database, built with ASP.NET, C# and SQL Server.</p></div>
+        </div>
+        <div class="skills" aria-label="Technologies">
+          <span>HTML</span><span>CSS</span><span>JavaScript</span><span>ASP.NET</span><span>C#</span><span>SQL Server</span><span>Responsive design</span><span>SEO basics</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="wrap" style="padding:0">
+        <h2>My projects</h2>
+        <p class="lead">I’m just starting out, so these are my current projects. Client work will appear here soon.</p>
+        <div class="grid3">
+          <article class="card">
+            <div class="thumb t1" aria-hidden="true"><i></i><i style="width:90%"></i><i style="width:45%"></i></div>
+            <h3>Nikhil Stationaries</h3>
+            <p>A stationery shop website with user login and an admin login to manage products, built with ASP.NET, C# and SQL Server.</p>
+            <div class="tags"><span>In progress</span><span>ASP.NET</span></div>
+          </article>
+          <article class="card">
+            <div class="thumb t2" aria-hidden="true"><i style="width:50%"></i><div class="row"><i></i><i></i></div></div>
+            <h3>Practice site: local business</h3>
+            <p>A responsive five-page site I’m building to practise layout, contact forms and mobile design.</p>
+            <div class="tags"><span>Practice</span><span>Responsive</span></div>
+          </article>
+          <article class="card">
+            <div class="thumb t3" aria-hidden="true"><i style="width:70%"></i><div class="row"><i></i><i></i><i></i></div></div>
+            <h3>Your project</h3>
+            <p>I’m looking for my first clients, so I offer small projects at a friendly price. Yours could be featured here.</p>
+            <div class="tags"><span>Open slot</span><span>Friendly price</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="wrap" style="padding:0">
+        <h2>How we work together</h2>
+        <p class="lead">Four steps, with a preview link along the way so there are no surprises.</p>
+        <ol class="steps">
+          <li><h3>Talk</h3><p>We discuss your business, your customers and what the site must do.</p></li>
+          <li><h3>Design</h3><p>You see a simple layout and approve it before any code is written.</p></li>
+          <li><h3>Build</h3><p>I build it, test it on phones and computers, and share a preview.</p></li>
+          <li><h3>Launch</h3><p>I put it online, train you to update it and stay available for changes.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap" style="padding:0">
+        <div class="contact">
+          <div>
+            <h2>Tell me about your project.</h2>
+            <p>Send a short message about what you need. I reply within one working day with next steps and a price.</p>
+          </div>
+          <div class="cta">
+            <a class="btn" href="mailto:nikhilpandey7561@gmail.com?subject=Website%20project">Email me</a>
+            <a class="btn alt" href="tel:+918987594335">Call +91 89875 94335</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 Nikhil Pandey, NP Web Studio</span>
+    <span>Website developer, Jharkhand, India</span>
+  </footer>
+</div>
+<script>
+(function(){
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var el=document.getElementById('rot');
+  var words=['business websites','online stores','booking systems','admin panels'];
+  if(el&&!reduce){
+    var w=0,c=words[0].length,del=true;
+    (function tick(){
+      var word=words[w];
+      el.textContent=word.slice(0,c);
+      if(del){c--;if(c<0){del=false;w=(w+1)%words.length;c=0;return setTimeout(tick,300)}return setTimeout(tick,40)}
+      c++;
+      if(c>word.length){del=true;c=word.length;return setTimeout(tick,1600)}
+      setTimeout(tick,80);
+    })();
+  }
+  if(!('IntersectionObserver' in window)||reduce)return;
+  document.documentElement.classList.add('js');
+  var items=document.querySelectorAll('.card,.steps li,.skills span,.contact,.portrait,.stats div,section h2');
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting)return;
+      e.target.classList.add('in');io.unobserve(e.target);
+      var b=e.target.querySelector&&e.target.querySelector('b[data-to]');
+      if(b){var to=+b.dataset.to,n=0,step=Math.max(1,Math.ceil(to/30));
+        var t=setInterval(function(){n=Math.min(to,n+step);b.textContent=n;if(n>=to)clearInterval(t)},40);b.textContent=0}
+    });
+  },{threshold:.15});
+  items.forEach(function(i,k){i.classList.add('rv');i.style.transitionDelay=(k%3)*90+'ms';io.observe(i)});
+})();
+</script>
+</body>
+</html>
